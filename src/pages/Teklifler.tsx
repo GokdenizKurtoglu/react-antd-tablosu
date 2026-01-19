@@ -1,33 +1,28 @@
 import { useState } from "react";
-import { Table, Tag, ConfigProvider, Typography, Input } from "antd"; 
+import { Table, ConfigProvider, Typography, Input } from "antd"; 
 import { SearchOutlined } from "@ant-design/icons";
 import { teklifler } from "../data/teklifler"; 
+import { TeklifDetailModal } from "../components/TeklifDetailModal";
+import type { Teklif } from "../types/Teklif";
+
+// 👇 YENİ: Sütunları dışarıdan çağırıyoruz
+import { getTeklifColumns } from "../constants/teklifColumns";
 
 const { Title } = Typography;
 
-
-const columns = [
-  { title: 'Teklif No', dataIndex: 'id', align: 'center' as const },
-  { title: 'Müşteri', dataIndex: 'musteri', align: 'left' as const },
-  { title: 'Tutar', dataIndex: 'tutar', align: 'center' as const },
-  { 
-    title: 'Durum', 
-    dataIndex: 'durum', 
-    align: 'center' as const,
-    render: (durum: string) => {
-      let color = 'geekblue';
-      if (durum === 'Reddedildi') color = 'volcano';
-      if (durum === 'Onaylandı') color = 'green';
-      return <Tag color={color}>{durum.toUpperCase()}</Tag>;
-    }
-  },
-];
-
-
 export const Teklifler = () => {
   const [aramaMetni, setAramaMetni] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedTeklif, setSelectedTeklif] = useState<Teklif | null>(null);
 
-  
+  const handleDetailClick = (teklif: Teklif) => {
+    setSelectedTeklif(teklif);
+    setIsModalOpen(true);
+  };
+
+  // 👇 Sütunları burada oluşturuyoruz (handleDetailClick'i içine göndererek)
+  const columns = getTeklifColumns(handleDetailClick);
+
   const filtrelenmisTeklifler = teklifler.filter((teklif) => {
     const term = aramaMetni.toLowerCase();
     return (
@@ -60,12 +55,11 @@ export const Teklifler = () => {
       }}
     >
       <div style={{ background: "#fff", padding: "24px", borderRadius: "8px", border: "1px solid #f0f0f0" }}>
- 
+
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px", flexWrap: "wrap", gap: "10px" }}>
           <Title level={3} style={{ margin: 0, color: "#2e3c87" }}>
             Teklif Listesi
           </Title>
-
 
           <Input 
             placeholder="Teklif No, Müşteri veya Durum ara..." 
@@ -76,10 +70,9 @@ export const Teklifler = () => {
           />
         </div>
         
-
         <Table 
           dataSource={filtrelenmisTeklifler}
-          columns={columns} 
+          columns={columns} // 👇 Artık dışarıdan gelen sütunları kullanıyor
           pagination={{ 
             pageSize: 5,
             total: filtrelenmisTeklifler.length,
@@ -91,6 +84,13 @@ export const Teklifler = () => {
           }} 
         />
       </div>
+
+      <TeklifDetailModal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        teklif={selectedTeklif}
+      />
+
     </ConfigProvider>
   );
 };

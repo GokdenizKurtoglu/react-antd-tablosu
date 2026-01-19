@@ -81,7 +81,7 @@ export const UserList = () => {
           dataSource={filteredUsers}
           rowKey="id"
           pagination={{
-            pageSize: 4,
+            pageSize: 6,
             
             total: filteredUsers.length,
             showTotal: (total, range) => (

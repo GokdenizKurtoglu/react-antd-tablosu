@@ -225,5 +225,17 @@ export const users: User[] = [
     kullanınlanIzin: 3,
   
   },
-  
-];
+   {
+    id: 18,
+    fullName: "Gökdeniz Kurtoğlu",
+    email: "GokD@gmail.com",
+    role: "Admin",
+    isActive: true,
+    ages: 21,
+    gender: "male",
+    city: "Sakarya",
+    departman: "Yazılım",
+    çalışmaDurumu: "stajyer",
+    kullanınlanIzin: 3,
+   },
+  ];
