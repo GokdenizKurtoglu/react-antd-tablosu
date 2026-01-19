@@ -1,8 +1,8 @@
 import { Layout } from "antd";
 import { Routes, Route } from "react-router-dom";
 import { UserList } from "./pages/UserList";
-import { Home } from "./pages/home"; // 👈 BURAYI DÜZELTTİK (küçük 'h' ile)
-import { Teklifler } from "./pages/Teklifler"; // Yeni sayfayı da ekledik
+import { Home } from "./pages/home"; 
+import { Teklifler } from "./pages/Teklifler"; 
 
 const { Content } = Layout;
 

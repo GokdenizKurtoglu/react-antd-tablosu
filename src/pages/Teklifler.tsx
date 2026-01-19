@@ -5,7 +5,7 @@ import { teklifler } from "../data/teklifler";
 import { TeklifDetailModal } from "../components/TeklifDetailModal";
 import type { Teklif } from "../types/Teklif";
 
-// 👇 YENİ: Sütunları dışarıdan çağırıyoruz
+
 import { getTeklifColumns } from "../constants/teklifColumns";
 
 const { Title } = Typography;
@@ -20,7 +20,7 @@ export const Teklifler = () => {
     setIsModalOpen(true);
   };
 
-  // 👇 Sütunları burada oluşturuyoruz (handleDetailClick'i içine göndererek)
+  
   const columns = getTeklifColumns(handleDetailClick);
 
   const filtrelenmisTeklifler = teklifler.filter((teklif) => {
@@ -72,7 +72,7 @@ export const Teklifler = () => {
         
         <Table 
           dataSource={filtrelenmisTeklifler}
-          columns={columns} // 👇 Artık dışarıdan gelen sütunları kullanıyor
+          columns={columns} 
           pagination={{ 
             pageSize: 5,
             total: filtrelenmisTeklifler.length,
