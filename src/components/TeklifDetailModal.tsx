@@ -13,7 +13,7 @@ export const TeklifDetailModal = ({ isOpen, onClose, teklif }: TeklifDetailModal
     <Modal
       open={isOpen}
       onCancel={onClose}
-      footer={null} // Alt kısımdaki butonları kaldırdık
+      footer={null} 
       title="Teklif Detayı"
     >
       {teklif && (

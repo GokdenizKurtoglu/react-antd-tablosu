@@ -1,4 +1,4 @@
-// src/data/teklifler.ts
+
 import type { Teklif } from "../types/Teklif";
 
 export const teklifler: Teklif[] = [
