@@ -48,7 +48,7 @@ export const getTeklifColumns = (
         type="primary"
         onClick={() => onDetailClick(record)}
         style={{
-          backgroundColor: "#5007a3", 
+          backgroundColor: "#2e3c87", 
           borderColor: "#2e3c87",
           borderRadius: "4px",
           width: "100%",

@@ -1,13 +1,14 @@
 export interface User {
-  id: number;
+  key: string;
+  id: string; 
   fullName: string;
   email: string;
-  role: "Admin" | "User";
-  isActive: boolean;
-  gender:"male"|"female";
-  ages:number;
+  role: string;
   city: string;
   departman: string;
-  çalışmaDurumu:"full-time"|"stajyer";
-  kullanınlanIzin:number;
+  gender: string; 
+  ages: number;
+  çalışmaDurumu: string;
+  kullanınlanIzin: number;
+  isActive: boolean;
 }

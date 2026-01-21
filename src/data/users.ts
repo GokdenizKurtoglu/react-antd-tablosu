@@ -1,9 +1,9 @@
-import {type User } from "../types/User";
+import type { User } from "../types/User";
 
 export const users: User[] = [
-  
   {
-    id: 1,
+    key: "1",      
+    id: "1",      
     fullName: "Ahmet Yılmaz",
     email: "ahmet@gmail.com",
     role: "Admin",
@@ -16,7 +16,8 @@ export const users: User[] = [
     kullanınlanIzin: 4,
   },
   {
-    id: 2,
+    key: "2",
+    id: "2",
     fullName: "Mehmet Demir",
     email: "mehmet@gmail.com",
     role: "User",
@@ -29,7 +30,8 @@ export const users: User[] = [
     kullanınlanIzin: 7,
   },
   {
-    id: 3,
+    key: "3",
+    id: "3",
     fullName: "Ayşe Kaya",
     email: "ayse@gmail.com",
     role: "User",
@@ -42,7 +44,8 @@ export const users: User[] = [
     kullanınlanIzin: 0,
   },
   {
-    id: 4,
+    key: "4",
+    id: "4",
     fullName: "Zeynep Çelik",
     email: "zeynep@gmail.com",
     role: "Admin",
@@ -55,7 +58,8 @@ export const users: User[] = [
     kullanınlanIzin: 3,
   },
   {
-    id: 5,
+    key: "5",
+    id: "5",
     fullName: "Ali Can",
     email: "ali@gmail.com",
     role: "User",
@@ -68,7 +72,8 @@ export const users: User[] = [
     kullanınlanIzin: 0,
   },
   {
-    id: 6,
+    key: "6",
+    id: "6",
     fullName: "Canan Arslan",
     email: "canan@gmail.com",
     role: "User",
@@ -81,7 +86,8 @@ export const users: User[] = [
     kullanınlanIzin: 5,
   },
   {
-    id: 7,
+    key: "7",
+    id: "7",
     fullName: "Burak Koç",
     email: "burak@gmail.com",
     role: "User",
@@ -94,7 +100,8 @@ export const users: User[] = [
     kullanınlanIzin: 10,
   },
   {
-    id: 8,
+    key: "8",
+    id: "8",
     fullName: "Elif Şahin",
     email: "elif@gmail.com",
     role: "Admin",
@@ -107,7 +114,8 @@ export const users: User[] = [
     kullanınlanIzin: 6,
   },
   {
-    id: 9,
+    key: "9",
+    id: "9",
     fullName: "Mert Aydın",
     email: "mert@gmail.com",
     role: "User",
@@ -120,7 +128,8 @@ export const users: User[] = [
     kullanınlanIzin: 0,
   },
   {
-    id: 10,
+    key: "10",
+    id: "10",
     fullName: "Selin Yıldız",
     email: "selin@gmail.com",
     role: "User",
@@ -133,7 +142,8 @@ export const users: User[] = [
     kullanınlanIzin: 8,
   },
   {
-    id: 11,
+    key: "11",
+    id: "11",
     fullName: "Deniz Soylu",
     email: "deniz@gmail.com",
     role: "User",
@@ -146,7 +156,8 @@ export const users: User[] = [
     kullanınlanIzin: 14,
   },
   {
-    id: 12,
+    key: "12",
+    id: "12",
     fullName: "Gizem Kara",
     email: "gizem@gmail.com",
     role: "Admin",
@@ -159,7 +170,8 @@ export const users: User[] = [
     kullanınlanIzin: 2,
   },
   {
-    id: 13,
+    key: "13",
+    id: "13",
     fullName: "Ozan Tekin",
     email: "ozan@gmail.com",
     role: "User",
@@ -172,7 +184,8 @@ export const users: User[] = [
     kullanınlanIzin: 0,
   },
   {
-    id: 14,
+    key: "14",
+    id: "14",
     fullName: "Berna Yılmaz",
     email: "berna@gmail.com",
     role: "User",
@@ -185,7 +198,8 @@ export const users: User[] = [
     kullanınlanIzin: 5,
   },
   {
-    id: 15,
+    key: "15",
+    id: "15",
     fullName: "Hakan Çetin",
     email: "hakan@gmail.com",
     role: "Admin",
@@ -198,7 +212,8 @@ export const users: User[] = [
     kullanınlanIzin: 20,
   },
   {
-    id: 16,
+    key: "16",
+    id: "16",
     fullName: "Seda Vural",
     email: "seda@gmail.com",
     role: "User",
@@ -209,10 +224,10 @@ export const users: User[] = [
     departman: "tasarım",
     çalışmaDurumu: "stajyer",
     kullanınlanIzin: 0,
-  
   },
   {
-    id: 17,
+    key: "17",
+    id: "17",
     fullName: "Barbaros Soykan",
     email: "barbar@gmail.com",
     role: "User",
@@ -223,10 +238,10 @@ export const users: User[] = [
     departman: "Sağlık",
     çalışmaDurumu: "stajyer",
     kullanınlanIzin: 3,
-  
   },
-   {
-    id: 18,
+  {
+    key: "18",
+    id: "18",
     fullName: "Gökdeniz Kurtoğlu",
     email: "GokD@gmail.com",
     role: "Admin",
@@ -237,5 +252,5 @@ export const users: User[] = [
     departman: "Yazılım",
     çalışmaDurumu: "stajyer",
     kullanınlanIzin: 3,
-   },
-  ];
+  },
+];
