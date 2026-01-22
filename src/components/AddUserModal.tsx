@@ -10,21 +10,22 @@ interface AddUserModalProps {
 export const AddUserModal = ({ isOpen, onClose, onSave }: AddUserModalProps) => {
   const [form] = Form.useForm();
 
- 
   const handleCancel = () => {
     form.resetFields();
     onClose();
   };
 
- 
+  // Kaydet'e basılınca olaylar burada dönüyor
   const handleOk = () => {
     form
-      .validateFields()
+      .validateFields() // 👈 BURASI KONTROL EDİYOR. Kurallara uyulmuş mu diye burası bakar.
       .then((values) => {
-        onSave(values);
+        // Eğer kurallara uyulduysa, veriyi kaydetmesi için ana sayfaya buradan yolluyorum.
+        onSave(values); 
         form.resetFields(); 
       })
       .catch((info) => {
+        // Eğer zorunlu alanlar boşsa veya hatalıysa buraya düşer (Konsola yazar, ekranda da kırmızı uyarı çıkar).
         console.log("Doğrulama Hatası:", info);
       });
   };
@@ -35,41 +36,44 @@ export const AddUserModal = ({ isOpen, onClose, onSave }: AddUserModalProps) => 
       title="Yeni Kullanıcı Ekle"
       onCancel={handleCancel}
       footer={[
-        <Button key="back" onClick={handleCancel}>
-          İptal
-        </Button>,
+        <Button key="back" onClick={handleCancel}>İptal</Button>,
         <Button key="submit" type="primary" onClick={handleOk} style={{ backgroundColor: "#2e3c87" }}>
           Kaydet
         </Button>,
       ]}
     >
-      <Form
-        form={form}
-        layout="vertical"
-        name="userForm"
-      >
-        <Form.Item
-          name="fullName"
-          label="Ad Soyad"
+      <Form form={form} layout="vertical" name="userForm">
+        
+        {/* 👇 ZORUNLU ALAN ÖRNEĞİ */}
+        <Form.Item 
+          name="fullName" 
+          label="Ad Soyad" 
+          // İŞTE ZORUNLULUĞU SAĞLAYAN KOMUT: 'required: true'
+          // Ekranda çıkacak hata uyarısı da 'message' kısmında yazıyor.
           rules={[{ required: true, message: "Lütfen ad soyad giriniz!" }]}
         >
           <Input placeholder="Örn: Defne Boğaz" />
         </Form.Item>
 
-        <Form.Item
-          name="email"
-          label="Email Adresi"
+        {/* 👇 HEM ZORUNLU HEM FORMAT KONTROLÜ */}
+        <Form.Item 
+          name="email" 
+          label="Email Adresi" 
+          // Burada iki kural var:
+          // 1. required: true -> Boş bırakılamaz.
+          // 2. type: "email" -> @ işareti ve format kontrolü yapar. Yanlışsa mesajı gösterir.
           rules={[
-            { required: true, message: "Lütfen email giriniz!" },
-            { type: "email", message: "Geçerli bir email giriniz!" },
+            { required: true, message: "Lütfen email giriniz!" }, 
+            { type: "email", message: "Geçerli bir email giriniz!" }
           ]}
         >
           <Input placeholder="orn@sirket.com" />
         </Form.Item>
 
-        <Form.Item
-          name="role"
-          label="Rol"
+        <Form.Item 
+          name="role" 
+          label="Rol" 
+          // Sadece seçilmesi zorunlu, özel bir mesaj yazmadık, varsayılan uyarı çıkar.
           rules={[{ required: true, message: "Lütfen bir rol seçiniz!" }]}
         >
           <Select placeholder="Rol seçiniz">
@@ -79,13 +83,48 @@ export const AddUserModal = ({ isOpen, onClose, onSave }: AddUserModalProps) => 
           </Select>
         </Form.Item>
 
-        <Form.Item name="city" label="Şehir" rules={[{ required: true, message: "Şehir giriniz!" }]}>
-           <Input placeholder="Örn: Ankara" />
+        <div style={{ display: 'flex', gap: '10px' }}>
+          <Form.Item 
+            name="city" 
+            label="Şehir" 
+            style={{ flex: 1 }} 
+            // Şehir girmek zorunlu
+            rules={[{ required: true, message: "Şehir giriniz!" }]}
+          >
+             <Input placeholder="Örn: Ankara" />
+          </Form.Item>
+
+          {/* 👇 ZORUNLU OLMAYAN (OPSİYONEL) ALAN */}
+          <Form.Item 
+            name="departman" 
+            label="Departman" 
+            style={{ flex: 1 }}
+            
+          >
+             <Input placeholder="Örn: Yazılım" />
+          </Form.Item>
+        </div>
+        <div style={{ display: 'flex', gap: '10px' }}>
+
+          {/* Yaş girmek zorunlu değil (rules yok) */}
+          <Form.Item name="ages" label="Yaş" style={{ flex: 1 }}>
+             <Input type="number" placeholder="Yaş" />
+          </Form.Item>
+
+          {/* Cinsiyet seçmek zorunlu değil (rules yok) */}
+          <Form.Item name="gender" label="Cinsiyet" style={{ flex: 1 }}>
+            <Select placeholder="Seçiniz">
+              <Select.Option value="male">Erkek</Select.Option>
+              <Select.Option value="female">Kadın</Select.Option>
+            </Select>
+          </Form.Item>
+        </div>
+
+        {/* İzin girmek zorunlu değil (rules yok) */}
+        <Form.Item name="kullanınlanIzin" label="Kullanılan İzin">
+           <Input type="number" placeholder="Örn: 5" />
         </Form.Item>
 
-        <Form.Item name="departman" label="Departman">
-           <Input placeholder="Örn: Yazılım" />
-        </Form.Item>
       </Form>
     </Modal>
   );

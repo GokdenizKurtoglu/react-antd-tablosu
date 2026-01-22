@@ -1,21 +1,32 @@
-import { Layout, Menu, Input } from "antd";
+import { Layout, Menu, Button } from "antd";
 import { useNavigate, useLocation } from "react-router-dom";
 import { 
   HomeOutlined, 
   TeamOutlined, 
   FileTextOutlined,
-  SearchOutlined 
+  MenuUnfoldOutlined, 
+  MenuFoldOutlined 
 } from "@ant-design/icons";
 
 const { Sider } = Layout;
 
-export const SubMenü = () => {
+// Props tanımı: Ana sayfadan hangi verilerin geleceğini söylüyoruz
+interface SubMenuProps {
+  collapsed: boolean;
+  onCollapse: () => void;
+}
+
+export const SubMenü = ({ collapsed, onCollapse }: SubMenuProps) => {
   const navigate = useNavigate();
   const location = useLocation();
 
   return (
     <Sider 
-      width={250} 
+      trigger={null} // Varsayılan alt tetiği kapattık
+      collapsible 
+      collapsed={collapsed} 
+      width={250}
+      collapsedWidth={80} // Kapandığında ne kadar genişlikte kalacağı
       style={{ 
         overflow: 'auto', 
         height: '100vh', 
@@ -23,22 +34,19 @@ export const SubMenü = () => {
         left: 0, 
         top: 0, 
         bottom: 0,
-        background: '#001529' 
+        background: '#001529',
+        zIndex: 1000,
       }}
     >
-    
-      
-      {/* Arama Çubuğu */}
-      <div style={{ padding: '0 16px', marginBottom: '16px', marginTop: '20px' }}> {}
-        <Input 
-          placeholder="Menüde ara..." 
-          prefix={<SearchOutlined style={{ color: 'rgba(255,255,255,0.5)' }} />} 
-          style={{ 
-            backgroundColor: 'rgba(255, 255, 255, 0.1)',
-            border: 'none', 
-            color: 'white'
-          }}
-        />
+      {/* AÇMA/KAPAMA BUTONU */}
+      <div style={{ display: 'flex', justifyContent: 'center', padding: '16px 0' }}>
+        <Button 
+          type="primary" 
+          onClick={onCollapse} 
+          style={{ marginBottom: 10 }}
+        >
+          {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+        </Button>
       </div>
 
       <Menu
