@@ -1,5 +1,5 @@
 import { Tag, Button, Space, Popconfirm, Tooltip } from "antd";
-import { EditOutlined, DeleteOutlined, SwapOutlined } from "@ant-design/icons"; // Swap ikonu
+import { EditOutlined, DeleteOutlined, SwapOutlined } from "@ant-design/icons"; // ikonlar
 import type { User } from "../types/User";
 import type { ColumnsType } from "antd/es/table";
 
@@ -7,7 +7,7 @@ export const getUserColumns = (
   onDetailClick: (user: User) => void,
   onEditClick: (user: User) => void,
   onDeleteClick: (id: string) => void,
-  onStatusChange: (id: string, currentStatus: boolean) => void // Durum değiştirme fonksiyonu
+  onStatusChange: (id: string, currentStatus: boolean) => void 
 ): ColumnsType<User> => [
   {
     title: "Ad Soyad",

@@ -10,7 +10,7 @@ import {
 
 const { Sider } = Layout;
 
-// Props tanımı: Ana sayfadan hangi verilerin geleceğini söylüyoruz
+// Ana sayfadan hangi verilerin geleceğini söylüyoruz
 interface SubMenuProps {
   collapsed: boolean;
   onCollapse: () => void;
@@ -22,7 +22,7 @@ export const SubMenü = ({ collapsed, onCollapse }: SubMenuProps) => {
 
   return (
     <Sider 
-      trigger={null} // Varsayılan alt tetiği kapattık
+      trigger={null} 
       collapsible 
       collapsed={collapsed} 
       width={250}

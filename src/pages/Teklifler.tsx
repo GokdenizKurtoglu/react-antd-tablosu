@@ -152,7 +152,7 @@ export const Teklifler = () => {
             style={{
               margin: 0,
               fontSize: 24,
-              color: "#3f2b96",
+              color: "#2e3c87",
               fontWeight: "bold",
             }}
           >

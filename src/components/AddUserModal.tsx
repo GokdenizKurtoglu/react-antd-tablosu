@@ -15,12 +15,12 @@ export const AddUserModal = ({ isOpen, onClose, onSave }: AddUserModalProps) => 
     onClose();
   };
 
-  // Kaydet'e basılınca olaylar burada dönüyor
+  
   const handleOk = () => {
     form
-      .validateFields() // 👈 BURASI KONTROL EDİYOR. Kurallara uyulmuş mu diye burası bakar.
+      .validateFields() 
       .then((values) => {
-        // Eğer kurallara uyulduysa, veriyi kaydetmesi için ana sayfaya buradan yolluyorum.
+       
         onSave(values); 
         form.resetFields(); 
       })
@@ -44,22 +44,21 @@ export const AddUserModal = ({ isOpen, onClose, onSave }: AddUserModalProps) => 
     >
       <Form form={form} layout="vertical" name="userForm">
         
-        {/* 👇 ZORUNLU ALAN ÖRNEĞİ */}
+        {/*  ZORUNLU ALAN ÖRNEĞİ */}
         <Form.Item 
           name="fullName" 
           label="Ad Soyad" 
-          // İŞTE ZORUNLULUĞU SAĞLAYAN KOMUT: 'required: true'
+          //  SAĞLAYAN KOMUT: 'required: true'
           // Ekranda çıkacak hata uyarısı da 'message' kısmında yazıyor.
           rules={[{ required: true, message: "Lütfen ad soyad giriniz!" }]}
         >
           <Input placeholder="Örn: Defne Boğaz" />
         </Form.Item>
 
-        {/* 👇 HEM ZORUNLU HEM FORMAT KONTROLÜ */}
+        {/*  HEM ZORUNLU HEM FORMAT KONTROLÜ */}
         <Form.Item 
           name="email" 
           label="Email Adresi" 
-          // Burada iki kural var:
           // 1. required: true -> Boş bırakılamaz.
           // 2. type: "email" -> @ işareti ve format kontrolü yapar. Yanlışsa mesajı gösterir.
           rules={[
@@ -73,7 +72,7 @@ export const AddUserModal = ({ isOpen, onClose, onSave }: AddUserModalProps) => 
         <Form.Item 
           name="role" 
           label="Rol" 
-          // Sadece seçilmesi zorunlu, özel bir mesaj yazmadık, varsayılan uyarı çıkar.
+          // Sadece seçilmesi zorunlu,
           rules={[{ required: true, message: "Lütfen bir rol seçiniz!" }]}
         >
           <Select placeholder="Rol seçiniz">
